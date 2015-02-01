@@ -24,6 +24,16 @@ angular.module('chatApp', [])
    };
 
    $scope.postMessage = function() {
+      if (!$scope.loggedIn) {
+        $scope.errorMessage = "You must login first.";
+        return;
+      }
+
+      if (!$scope.message.text) {
+        $scope.errorMessage = "You must enter a message.";
+        return;
+      }
+
       PUBNUB.publish({
          channel : $scope.chatChannel,
          message : $scope.message
