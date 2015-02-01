@@ -54,7 +54,12 @@ angular.module('chatApp', [])
    };
 
    $scope.postMessage = function() {
+      PUBNUB.publish({
+         channel : $scope.chatChannel,
+         message : $scope.message
+      });
 
+      $scope.message.text = "";
    };
 
 });
