@@ -16,7 +16,12 @@ angular.module('chatApp', [])
       channel: $scope.chatChannel,
       restore: false,
 
-      callback: function() { },
+      callback: function(message) { 
+      //update messages with the new message
+         $scope.$apply(function(){
+            $scope.chatMessages.unshift(message);          
+         }); 
+      },
 
       disconnect: function() {   
          $scope.$apply(function(){
@@ -33,6 +38,8 @@ angular.module('chatApp', [])
       connect: function() {
          $scope.$apply(function(){
             $scope.currentConnectionStatus = 2;
+            // Load messages that are logged already
+            $scope.chatLogs();
          });
       }
    });
@@ -60,6 +67,17 @@ angular.module('chatApp', [])
       });
 
       $scope.message.text = "";
+   };
+
+   $scope.chatLogs = function() {
+      PUBNUB.history( {
+         channel: $scope.chatChannel,
+         limit: $scope.messageLimit
+      }, function(messages) {
+         $scope.$apply(function(){
+            $scope.chatMessages = messages;          
+         }); 
+      });
    };
 
 });
