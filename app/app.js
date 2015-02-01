@@ -53,4 +53,8 @@ angular.module('chatApp', [])
       $scope.loggedIn = true;
    };
 
+   $scope.postMessage = function() {
+
+   };
+
 });
