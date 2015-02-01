@@ -10,6 +10,7 @@ angular.module('chatApp', [])
 
    $scope.currentConnectionStatus = 0;
    $scope.errorMessage;
+   $scope.loggedIn = false;
 
    PUBNUB.subscribe({
       channel: $scope.chatChannel,
@@ -35,5 +36,21 @@ angular.module('chatApp', [])
          });
       }
    });
+
+   $scope.attemptLogin = function() {
+      $scope.errorMessage = "";
+
+      if (!$scope.message.username) {
+         $scope.errorMessage = "you must enter a username.";
+         return;
+      }
+
+      if (!$scope.currentConnectionStatus) {
+         $scope.errorMessage = "you're not connect to our chat room yet.";
+         return;
+      }
+
+      $scope.loggedIn = true;
+   };
 
 });

@@ -37,6 +37,16 @@
                </div>
             </div>
          </div>
+         <div class="row">
+            <div class="col-md-8">
+               <div id="login" ng-show="!loggedIn">
+                  <h2>Login</h2>
+                  <label>Username:</label>
+                  <input type="text" ng-model="message.username" placeholder="Enter Name" />
+                  <button class="btn btn-default" ng-click="attemptLogin()">Start Chatting!</button>
+               </div>
+            </div>
+         </div>
       </div>
    </body>
 </html>
