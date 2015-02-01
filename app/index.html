@@ -31,6 +31,13 @@
             </div>
          </div>
          <div class="row">
+            <div class="col-md-3">
+               <div ng-show="loggedIn" id="logout">
+                  <button class="btn btn-danger" ng-click="attemptLogout()">Logout</button>
+               </div>
+            </div>
+         </div>
+         <div class="row">
             <div class="col-md-4">
                <div ng-show="errorMessage">
                   Oops... {{errorMessage}}

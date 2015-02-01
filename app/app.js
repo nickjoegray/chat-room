@@ -25,12 +25,12 @@ angular.module('chatApp', [])
 
    $scope.postMessage = function() {
       if (!$scope.loggedIn) {
-        $scope.errorMessage = "You must login first.";
+        $scope.errorMessage = "you must login first.";
         return;
       }
 
       if (!$scope.message.text) {
-        $scope.errorMessage = "You must enter a message.";
+        $scope.errorMessage = "you must enter a message.";
         return;
       }
 
@@ -88,6 +88,11 @@ angular.module('chatApp', [])
       }
 
       $scope.loggedIn = true;
+   };
+
+   $scope.attemptLogout = function() {
+      $scope.loggedIn = false;
+      $scope.message.username = "";
    };
 
 });
