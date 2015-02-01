@@ -13,8 +13,23 @@
    <body>
       <div class="container-fluid" ng-controller="ChatCtrl">
          <div class="row">
-            app here
+            <header class="text-center">
+               <h1>Chat Room</h1>
+            </header>
+         </div>
+         <div class="row">
+            <div class="col-md-12 text-center">
+               <div ng-show="currentConnectionStatus == 0">
+                  <span>Disconnected</span>
+               </div>
+               <div ng-show="currentConnectionStatus == 1">
+                  <span>Connecting...</span>
+               </div>
+               <div ng-show="currentConnectionStatus == 2">
+                  <span>Connected</span>
+               </div>
+            </div>
          </div>
       </div>
-</body>
+   </body>
 </html>
