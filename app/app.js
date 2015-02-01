@@ -12,6 +12,26 @@ angular.module('chatApp', [])
    $scope.errorMessage;
    $scope.loggedIn = false;
 
+   $scope.chatLogs = function() {
+      PUBNUB.history( {
+         channel: $scope.chatChannel,
+         limit: $scope.messageLimit
+      }, function(messages) {
+         $scope.$apply(function(){
+            $scope.chatMessages = messages;          
+         }); 
+      });
+   };
+
+   $scope.postMessage = function() {
+      PUBNUB.publish({
+         channel : $scope.chatChannel,
+         message : $scope.message
+      });
+
+      $scope.message.text = "";
+   };
+
    PUBNUB.subscribe({
       channel: $scope.chatChannel,
       restore: false,
@@ -58,26 +78,6 @@ angular.module('chatApp', [])
       }
 
       $scope.loggedIn = true;
-   };
-
-   $scope.postMessage = function() {
-      PUBNUB.publish({
-         channel : $scope.chatChannel,
-         message : $scope.message
-      });
-
-      $scope.message.text = "";
-   };
-
-   $scope.chatLogs = function() {
-      PUBNUB.history( {
-         channel: $scope.chatChannel,
-         limit: $scope.messageLimit
-      }, function(messages) {
-         $scope.$apply(function(){
-            $scope.chatMessages = messages;          
-         }); 
-      });
    };
 
 });

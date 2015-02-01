@@ -56,6 +56,25 @@
                </div>
             </div>
          </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div id="chat-messages" ng-show="loggedIn">
+                  <table class="table">
+                     <tr ng-show="chatMessages.length == 0">
+                        <td>No messages yet, start chatting!</td>
+                     </tr>
+                     <tr ng-repeat="chat in chatMessages">
+                        <td>
+                           {{chat.username}} 
+                           <span ng-hide="!chat.text">says:</span>
+                           <br/>
+                           {{chat.text}}
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+         </div>
       </div>
    </body>
 </html>
