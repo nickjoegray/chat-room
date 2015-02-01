@@ -9,6 +9,7 @@ angular.module('chatApp', [])
    $scope.defaultUsername = "Guest";
 
    $scope.currentConnectionStatus = 0;
+   $scope.errorMessage;
 
    PUBNUB.subscribe({
       channel: $scope.chatChannel,
