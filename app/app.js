@@ -1,5 +1,7 @@
 'use strict';
 
+var socket = io('http://localhost:3000');
+
 angular.module('chatApp', [])
 
 .controller('ChatCtrl', function($scope, $http) {
